@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>📘 Admission Enquiry · Student portal</title>
+  <!-- Google Font & Font Awesome for clean icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+  <div class="enquiry-wrapper">
+    <div class="enquiry-card">
+      
+      <!-- Header with icon -->
+      <div class="card-header">
+        <i class="fas fa-graduation-cap"></i>
+        <h2>Admission Enquiry</h2>
+      </div>
+      <div class="subhead">
+        <i class="fas fa-phone-alt" style="margin-right: 8px; color: #1d7a9c;"></i> 
+        Get answers — fill the form, we’ll reach out within 24h
+      </div>
+
+      <!-- Dynamic success message injected via JS will appear here -->
+      <div id="liveSuccessMessage"></div>
+
+      <!-- ===== ENQUIRY FORM ===== -->
+      <form id="admissionEnquiryForm" novalidate>
+        
+        <!-- FULL NAME -->
+        <div class="form-group" id="group-fullname">
+          <label for="fullName">
+            <i class="fas fa-user-graduate"></i> 
+            Full name <span class="required-asterisk">*</span>
+          </label>
+          <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g. Priya Sharma" autocomplete="name">
+          <span class="error-text" id="errorFullName">
+            <i class="fas fa-exclamation-circle"></i> Please enter your full name
+          </span>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group" id="group-email">
+          <label for="email">
+            <i class="fas fa-envelope"></i> 
+            Email address <span class="required-asterisk">*</span>
+          </label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="student@example.com" autocomplete="email">
+          <span class="error-text" id="errorEmail">
+            <i class="fas fa-exclamation-circle"></i> Valid email required (e.g., name@domain.com)
+          </span>
+        </div>
+
+        <!-- PHONE NUMBER -->
+        <div class="form-group" id="group-phone">
+          <label for="phone">
+            <i class="fas fa-mobile-alt"></i> 
+            Mobile number <span class="required-asterisk">*</span>
+          </label>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="10-digit mobile" maxlength="10" autocomplete="tel">
+          <span class="error-text" id="errorPhone">
+            <i class="fas fa-exclamation-circle"></i> Enter exactly 10 digits (only numbers)
+          </span>
+          <small class="hint"><i class="fas fa-info-circle"></i> We’ll send SMS updates</small>
+        </div>
+
+        <!-- COURSE DROPDOWN -->
+        <div class="form-group" id="group-course">
+          <label for="course">
+            <i class="fas fa-book-open"></i> 
+            Intended course <span class="required-asterisk">*</span>
+          </label>
+        <select class="form-control" id="course" name="course">
+  <option value="" disabled selected>-- Select your preferred program --</option>
+  <option value="Bachelor of Arts">BA</option>
+  <option value="Bachelor of Pharmacy">B.Pharm</option>
+  <option value="Diploma in Pharmacy">D.Pharm</option>
+  <option value="Auxiliary Nurse Midwifery">ANM</option>
+  <option value="General Nursing and Midwifery">GNM</option>
+  <option value="Diploma in Elementary Education">D.El.Ed</option>
+  <option value="Other">Other / Not sure</option>
+</select>
+
+          <span class="error-text" id="errorCourse">
+            <i class="fas fa-exclamation-circle"></i> Please select a course
+          </span>
+        </div>
+
+        <!-- MESSAGE / QUERY -->
+        <div class="form-group" id="group-message">
+          <label for="message">
+            <i class="fas fa-comment-dots"></i> 
+            Your enquiry <span class="required-asterisk">*</span>
+          </label>
+          <textarea class="form-control" id="message" name="message" placeholder="Ask about admission process, deadlines, scholarships, hostel..."></textarea>
+          <span class="error-text" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i> Please write your question / enquiry
+          </span>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-paper-plane"></i> Send enquiry
+        </button>
+        
+        <div class="footer-note">
+          <i class="fas fa-shield-alt"></i> No spam, only admission guidance
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ---------- DOM elements ----------
+      const form = document.getElementById('admissionEnquiryForm');
+      const fullName = document.getElementById('fullName');
+      const email = document.getElementById('email');
+      const phone = document.getElementById('phone');
+      const course = document.getElementById('course');
+      const message = document.getElementById('message');
+
+      // Error spans
+      const errorFullName = document.getElementById('errorFullName');
+      const errorEmail = document.getElementById('errorEmail');
+      const errorPhone = document.getElementById('errorPhone');
+      const errorCourse = document.getElementById('errorCourse');
+      const errorMessage = document.getElementById('errorMessage');
+
+      // group containers for error highlight
+      const groupName = document.getElementById('group-fullname');
+      const groupEmail = document.getElementById('group-email');
+      const groupPhone = document.getElementById('group-phone');
+      const groupCourse = document.getElementById('group-course');
+      const groupMsg = document.getElementById('group-message');
+
+      // success div
+      const successDiv = document.getElementById('liveSuccessMessage');
+
+      // ---------- helper: remove error styling ----------
+      function removeErrorStyle(group, errorSpan) {
+        group.classList.remove('error-border');
+        if (errorSpan) errorSpan.style.display = 'none';
+      }
+
+      // ---------- individual field real-time validation (clear error on input) ----------
+      function attachRealTimeListeners() {
+        // full name
+        fullName.addEventListener('input', function() {
+          removeErrorStyle(groupName, errorFullName);
+        });
+        // email
+        email.addEventListener('input', function() {
+          removeErrorStyle(groupEmail, errorEmail);
+        });
+        // phone: allow only digits, auto-trim later but we clean input immediately 
+        phone.addEventListener('input', function(e) {
+          this.value = this.value.replace(/[^0-9]/g, ''); // only digits
+          removeErrorStyle(groupPhone, errorPhone);
+        });
+        // course
+        course.addEventListener('change', function() {
+          removeErrorStyle(groupCourse, errorCourse);
+        });
+        // message
+        message.addEventListener('input', function() {
+          removeErrorStyle(groupMsg, errorMessage);
+        });
+      }
+
+      // ---------- main validation ----------
+      function validateForm() {
+        let isValid = true;
+
+        // ----- Full name -----
+        const nameVal = fullName.value.trim();
+        if (nameVal === '') {
+          errorFullName.style.display = 'flex';
+          groupName.classList.add('error-border');
+          isValid = false;
+        } else {
+          errorFullName.style.display = 'none';
+          groupName.classList.remove('error-border');
+        }
+
+        // ----- Email (regex) -----
+        const emailVal = email.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // basic valid email
+        if (!emailPattern.test(emailVal)) {
+          errorEmail.style.display = 'flex';
+          groupEmail.classList.add('error-border');
+          isValid = false;
+        } else {
+          errorEmail.style.display = 'none';
+          groupEmail.classList.remove('error-border');
+        }
+
+        // ----- Phone: exactly 10 digits, numeric -----
+        const phoneVal = phone.value.trim();
+        const phoneDigits = phoneVal.replace(/\D/g, '');
+        if (phoneDigits.length !== 10) {
+          errorPhone.style.display = 'flex';
+          groupPhone.classList.add('error-border');
+          isValid = false;
+        } else {
+          errorPhone.style.display = 'none';
+          groupPhone.classList.remove('error-border');
+        }
+
+        // ----- Course selection -----
+        const courseVal = course.value;
+        if (!courseVal || courseVal === '') {  // if no value selected (disabled selected)
+          errorCourse.style.display = 'flex';
+          groupCourse.classList.add('error-border');
+          isValid = false;
+        } else {
+          errorCourse.style.display = 'none';
+          groupCourse.classList.remove('error-border');
+        }
+
+        // ----- Message / enquiry -----
+        const msgVal = message.value.trim();
+        if (msgVal === '') {
+          errorMessage.style.display = 'flex';
+          groupMsg.classList.add('error-border');
+          isValid = false;
+        } else {
+          errorMessage.style.display = 'none';
+          groupMsg.classList.remove('error-border');
+        }
+
+        return isValid;
+      }
+
+      // ---------- show success message and optionally reset form? we reset only after success ----------
+      function showSuccessMessage() {
+        // clear previous success
+        successDiv.innerHTML = '';
+        const successBanner = document.createElement('div');
+        successBanner.className = 'success-alert';
+        successBanner.innerHTML = `
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <strong>✅ Enquiry sent!</strong><br>
+            Thank you for reaching out. Our admission team will reply within 24 hours.
+          </div>
+        `;
+        successDiv.appendChild(successBanner);
+
+        // Remove success message after 6 seconds (so it doesn't stay forever)
+        setTimeout(() => {
+          if (successDiv.contains(successBanner)) {
+            successBanner.style.opacity = '0';
+            successBanner.style.transition = 'opacity 0.4s';
+            setTimeout(() => {
+              if (successDiv.contains(successBanner)) successBanner.remove();
+            }, 400);
+          }
+        }, 6000);
+      }
+
+      // ---------- reset error styles & hide all errors (used before re-validation) ----------
+      function resetAllErrors() {
+        const errorSpans = [errorFullName, errorEmail, errorPhone, errorCourse, errorMessage];
+        errorSpans.forEach(span => { if (span) span.style.display = 'none'; });
+        const groups = [groupName, groupEmail, groupPhone, groupCourse, groupMsg];
+        groups.forEach(g => g.classList.remove('error-border'));
+      }
+
+      // ---------- FORM SUBMIT ----------
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();  // always prevent default
+
+        // first hide all previous errors (clean state)
+        resetAllErrors();
+
+        // validate all fields
+        const isFormValid = validateForm();
+
+        if (isFormValid) {
+          // Optionally, you can store/ log data
+          // For demo, just show success message
+          showSuccessMessage();
+
+          // You may reset form after successful submission (optional - many users prefer to keep data, but resetting is clean)
+          // uncomment next line to clear all fields after successful submit
+          // form.reset();
+
+          // we remove error classes anyway
+        } else {
+          // If invalid, smooth scroll to first error? optional:
+          const firstErrorGroup = document.querySelector('.error-border');
+          if (firstErrorGroup) {
+            firstErrorGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      });
+
+      // ---------- attach real-time listeners ----------
+      attachRealTimeListeners();
+
+      // Additional: phone number paste cleaning
+      phone.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const pasted = (e.clipboardData || window.clipboardData).getData('text');
+        const cleaned = pasted.replace(/[^0-9]/g, '').slice(0,10);
+        this.value = cleaned;
+        removeErrorStyle(groupPhone, errorPhone);
+      });
+
+    })();
+  </script>
+
+  <!-- tiny extra style for error-text flex (since we use display:flex when active) -->
+  <style>
+    .error-text { display: none; align-items: center; gap: 5px; }
+    .error-border { border-color: #c83e4d !important; background-color: #fff6f5; }
+    /* override form-control focus when error-border + focus */
+    .error-border:focus { box-shadow: 0 0 0 3px rgba(200,62,77,0.12); border-color: #c83e4d; }
+  </style>
+</body>
+</html>

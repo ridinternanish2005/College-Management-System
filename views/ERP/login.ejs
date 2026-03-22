@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Maturani Devi Pharmacy College - Login</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="css/login.css">
+    
+
+    <!-- <style>
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+            color:#fff;
+        }
+        .container{
+            display:flex;
+            min-height:100vh;
+        }
+        .college-info{
+            flex:1;
+            padding:40px;
+        }
+        .login-section{
+            flex:1;
+            background:#fff;
+            color:#333;
+            padding:40px;
+        }
+        .form-control{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+        }
+        .btn-login{
+            width:100%;
+            padding:12px;
+            background:#2c5364;
+            color:#fff;
+            border:none;
+            cursor:pointer;
+            font-size:16px;
+        }
+        .btn-login:hover{
+            background:#203a43;
+        }
+    </style> -->
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT INFO -->
+    <div class="college-info">
+        <h1>Maa Maturani Devi Pharmacy College</h1>
+        <p>College Management System</p>
+        <p>Student | Faculty | Admin Portal</p>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="login-section">
+        <h2>Login</h2>
+
+        <form id="loginForm">
+
+            <label>User Type</label>
+            <select id="userType" class="form-control" required>
+                <option value="" disabled selected>Select user</option>
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+                <option value="admin">Admin</option>
+                <option value="principal">Principal</option>
+            </select>
+
+            <label>Session</label>
+            <select id="session" class="form-control" required>
+                <option value="2024-25" selected>2024-25</option>
+                <option value="2025-26">2025-26</option>
+            </select>
+
+            <label>Username / Enrollment</label>
+            <input type="text" id="username" class="form-control" placeholder="Enter username" required>
+
+            <label>Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+document.getElementById("userType").addEventListener("change", function () {
+    const username = document.getElementById("username");
+
+    if (this.value === "student") {
+        username.placeholder = "Enter Enrollment Number";
+    } else if (this.value === "faculty") {
+        username.placeholder = "Enter Faculty ID";
+    } else {
+        username.placeholder = "Enter Username";
+    }
+});
+
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const userType = document.getElementById("userType").value;
+    const session = document.getElementById("session").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (!userType || !session || !username || !password) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    // ===== LOGIN SUCCESS (Demo) =====
+    alert("Login Successful!");
+
+    // ===== ROLE BASED REDIRECT =====
+    const redirectPage = {
+        student: "student",
+        faculty: "faculty",
+        admin: "admin",
+        principal: "principal"
+    };
+
+    window.location.href = redirectPage[userType] || "dashboard.html";
+});
+</script>
+
+</body>
+</html>
