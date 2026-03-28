@@ -8,14 +8,481 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- <link rel="stylesheet" href="nav.css"> -->
   <link rel="stylesheet" href="css/slide.css">
   <link rel="stylesheet" href="css/navbar.css">
-   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/footer.css">
   
-   
-  <!-- public/images/bn1.webp -->
-   
+  <style>
+    /* New Middle Section Styles - Fully Responsive */
+    .excellence-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      padding: 80px 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header .subtitle {
+      color: #e67e22;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #e67e22, #f39c12);
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      color: #666;
+      font-size: 16px;
+      max-width: 700px;
+      margin: 30px auto 0;
+      line-height: 1.6;
+    }
+
+    /* Feature Cards Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 70px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .card-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover .card-image img {
+      transform: scale(1.1);
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(230,126,34,0.9), rgba(243,156,18,0.9));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .card-overlay i {
+      font-size: 48px;
+      color: white;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card-content h3 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .card-content p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      margin-bottom: 10px;
+      color: #555;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-list li i {
+      color: #e67e22;
+      margin-right: 10px;
+      font-size: 12px;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      margin-bottom: 70px;
+    }
+
+    .gallery-section h3 {
+      text-align: center;
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .gallery-section h3:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #e67e22;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      padding: 20px 15px 15px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      margin-bottom: 70px;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      border-radius: 30px;
+      padding: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-section:before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 120px;
+      color: rgba(255,255,255,0.1);
+      font-family: serif;
+    }
+
+    .testimonials-section h3 {
+      text-align: center;
+      color: white;
+      font-size: 28px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.95);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimonial-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      overflow: hidden;
+      border: 3px solid #e67e22;
+    }
+
+    .testimonial-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-card i {
+      color: #e67e22;
+      font-size: 24px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .testimonial-card p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    .testimonial-card h4 {
+      color: #2c3e50;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .testimonial-card span {
+      color: #888;
+      font-size: 12px;
+    }
+
+    /* Industry Connect Section */
+    .industry-connect {
+      background: linear-gradient(135deg, #e67e22, #f39c12);
+      border-radius: 30px;
+      padding: 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .industry-connect:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+      background-size: 50px 50px;
+      animation: shimmer 20s linear infinite;
+    }
+
+    @keyframes shimmer {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    .industry-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .industry-content h3 {
+      color: white;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .industry-content p {
+      color: white;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-size: 16px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .company-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .company-item {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .company-item:hover {
+      background: white;
+      color: #e67e22;
+      transform: translateY(-3px);
+    }
+
+    .stat-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 20px;
+      border-radius: 50px;
+      color: white;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .excellence-section {
+        padding: 50px 0;
+      }
+      
+      .section-header h2 {
+        font-size: 28px;
+      }
+      
+      .section-header p {
+        font-size: 14px;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .testimonials-section {
+        padding: 30px;
+      }
+      
+      .industry-connect {
+        padding: 30px;
+      }
+      
+      .industry-content h3 {
+        font-size: 24px;
+      }
+      
+      .gallery-section h3 {
+        font-size: 24px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      
+      .gallery-item img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .company-logos {
+        gap: 10px;
+      }
+      
+      .company-item {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .card-content h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header Container -->
@@ -28,11 +495,8 @@
             </p>
             <p>Helpline: <span>+91-6394213627</span></p>
             <p>Email: <span>maamaturnidevi@gmail.com</span></p>|
-            <!-- <span>ERP Login</span>|
-            <span>Admission Enquiry</span> -->
             <a href="/ERP"><span class="highlight-link erp">ERP Login</span> </a>|
- <a href="/Enquary"><span class="highlight-link admission">Admission Enquiry</span></a>
-
+            <a href="/enquary"><span class="highlight-link admission">Admission Enquiry</span></a>
         </div>
         <div class="right-text">
             <a class="link" href="#">AICTE:9001:2015 Certified</a>
@@ -46,9 +510,7 @@
     <div class="main-header">
         <div class="nav" id="main-nav">
             <div class="logo">
-  <img src="images/image3.png" alt="RID Bharat Logo">
-              
-              
+              <img src="images/image3.png" alt="maa maturani devi pharmacy college logo">  
             </div>
             <div class="menu" id="innerCont">
                 <div class="upperNav">
@@ -56,19 +518,12 @@
                         <i class=""></i>
                         S.V.I.C  School
                     </button>
-
-                     <!-- <button class="nav-button" id="ebookBtn">
-                        <i class="fa-solid fa-book"></i>
-                        
-                    </button>  -->
-
-                     <div class="certificate">
+                    <div class="certificate">
                         <button class="nav-button" id="certificate">
                             <i class=""></i> 
                             MSD School
                         </button>
                     </div> 
-
                     <div class="btn-box">
                         <div id="swap-btn"></div>
                         <button class="toggle-btn" id="logInButton">
@@ -89,15 +544,11 @@
                         </a>
                     </li>
                     <li>
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="about/about.html">
                             <i class="fa-solid fa-file-lines"></i>
                             About
                         </a>
-                        <!-- ........................................................................... -->
-                         
-                         <!-- ................................................................................ -->
                     </li>
-                  
                     <li class="dropdown" id="center-dropdown">
                         <a class="menu-link dropdown-toggle" href="#">
                             <i class="fa-solid fa-hub"></i>
@@ -106,42 +557,38 @@
                         <div class="dropdown-menu">
                             <ul>
                                 <li>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="why">
                                         <i class="fa-solid fa-graduation-cap"></i>
-                                        WHY MAA Maturani  devi
+                                        WHY MAA Maturani devi
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="allcoures">
+                                    <a class="nav-link" href="c">
                                         <i class="fa-solid fa-people-group"></i>
                                      ALL Course
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="procedure">
                                         <i class="fa-solid fa-flask"></i>
                                          Admission Procedure
                                     </a>
                                 </li>
-
-                                <!-- ................................................. -->
-                                   <li>
-                                    <a class="nav-link" href="code">
+                                <li>
+                                    <a class="nav-link" href="/code">
                                         <i class="fa-solid fa-graduation-cap"></i>
                                         Code Conduct
                                     </a>
                                 </li>
-                                  <li>
+                                <li>
                                     <a class="nav-link" href="admission">
                                         <i class="fa-solid fa-graduation-cap"></i>
                                         Admission Form
                                     </a>
                                 </li>
-                                 
-                                 <!-- ...................................................... -->
                             </ul>
                         </div>
-
+                    </li>
                     <li class="dropdown" id="center-dropdown">
                         <a class="menu-link dropdown-toggle" href="">
                             <i class="fa-solid fa-hub"></i>
@@ -156,38 +603,53 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="d.pharma">
                                         <i class="fa-solid fa-people-group"></i>
                                      D.PHARMACY
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="bpharma">
                                         <i class="fa-solid fa-flask"></i>
                                          B.PHARMACY
                                     </a>
                                 </li>
-
-                                <!-- ................................................. -->
-                                   <li>
-                                    <a class="nav-link" href="#">
+                                <li>
+                                    <a class="nav-link" href="BA">
                                         <i class="fa-solid fa-graduation-cap"></i>
                                         BA
                                     </a>
                                 </li>
-                                  <li>
-                                    <a class="nav-link" href="#">
+                                <li>
+                                    <a class="nav-link" href="anm">
                                         <i class="fa-solid fa-graduation-cap"></i>
                                         ANM
                                     </a>
                                 </li>
-                                  <li>
-                                    <a class="nav-link" href="#">
+                                <li>
+                                    <a class="nav-link" href="jnam">
                                         <i class="fa-solid fa-graduation-cap"></i>
                                         JNAM
                                     </a>
                                 </li>
-                                 <!-- ...................................................... -->
+                                <li>
+                                    <a class="nav-link" href="B.Ed">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                        B.Ed
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="B.El.Ed">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                        B.El.Ed
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="d.el.ed">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                        D.El.Ed
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -204,26 +666,20 @@
   </div>
 
   <!-- Hero Slider -->
-  
-<!-- Hero Slider with Auto-Play -->
-<section class="hero">
+  <section class="hero">
     <div class="hero-slide active">
         <img src="images/bn2.webp" alt="Slide 1" onerror="this.src='https://via.placeholder.com/1200x600/083d5d/FFFFFF?text=Slide+1'">    
     </div>
-    
     <div class="hero-slide">
         <img src="images/bn1.webp" alt="Slide 2" onerror="this.src='https://via.placeholder.com/1200x600/4da8da/FFFFFF?text=Slide+2'">
     </div>
-    
     <div class="hero-slide">
         <img src="images/bn3.webp" alt="Slide 3" onerror="this.src='https://via.placeholder.com/1200x600/ff6b35/FFFFFF?text=Slide+3'">
     </div>
-    
     <div class="hero-slide">
         <img src="images/bn4.png" alt="Slide 4" onerror="this.src='https://via.placeholder.com/1200x600/085d0f/FFFFFF?text=Slide+4'">
     </div>
     
-    <!-- Navigation Arrows -->
     <button class="hero-nav hero-nav-prev">
         <i class="fas fa-chevron-left"></i>
     </button>
@@ -231,7 +687,6 @@
         <i class="fas fa-chevron-right"></i>
     </button>
     
-    <!-- Auto-play Controls -->
     <div class="hero-controls">
         <button class="control-btn play-pause-btn active" title="Pause Auto-Play">
             <i class="fas fa-pause"></i>
@@ -241,7 +696,6 @@
         </div>
     </div>
     
-    <!-- Dots with Progress Indicators -->
     <div class="hero-dots">
         <span class="hero-dot active" data-slide="0">
             <span class="hero-dot-progress"></span>
@@ -256,13 +710,140 @@
             <span class="hero-dot-progress"></span>
         </span>
     </div>
-</section>
-  
-  
+  </section>
+
+  <!-- NEW MIDDLE SECTION - EXCELLENCE SECTION -->
+  <section class="excellence-section">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header">
+        <span class="subtitle">Excellence in Pharmacy Education</span><br>
+        <h2>Beyond the Classroom</h2>
+        <p>At Maa Maturani Devi Pharmacy College, we believe in nurturing well-rounded professionals through academic excellence, holistic development, and industry-ready training.</p>
+      </div>
+
+      <!-- Feature Cards with Images -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&h=400&fit=crop" alt="Pharmacy Lab">
+            <div class="card-overlay">
+              <i class="fas fa-microscope"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Academic Excellence</h3>
+            <p>State-of-the-art laboratories and digital library with experienced faculty ensuring outstanding university results.</p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Well-equipped Pharma Labs</li>
+              <li><i class="fas fa-check-circle"></i> Digital Library with 5000+ Journals</li>
+              <li><i class="fas fa-check-circle"></i> Research & Innovation Center</li>
+              <li><i class="fas fa-check-circle"></i> 95% University Exam Success Rate</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop" alt="Students Playing Sports">
+            <div class="card-overlay">
+              <i class="fas fa-futbol"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Holistic Development</h3>
+            <p>Beyond academics, we nurture well-rounded personalities through sports, cultural activities, and a supportive campus environment.</p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Annual Sports Meet & Tournaments</li>
+              <li><i class="fas fa-check-circle"></i> Cultural & Technical Fests</li>
+              <li><i class="fas fa-check-circle"></i> Ragging-Free Campus Environment</li>
+              <li><i class="fas fa-check-circle"></i> Student Clubs & Associations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop" alt="Placement Session">
+            <div class="card-overlay">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Career & Placement Support</h3>
+            <p>Dedicated training and placement cell to bridge the gap between academia and industry requirements.</p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> 100% Placement Assistance</li>
+              <li><i class="fas fa-check-circle"></i> Industrial Visits & Internships</li>
+              <li><i class="fas fa-check-circle"></i> Job Counseling & Resume Building</li>
+              <li><i class="fas fa-check-circle"></i> Mock Interviews & Soft Skills Training</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Section -->
+      <div class="gallery-section">
+        <h3>Campus Life & Moments</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop" alt="Lab Session">
+            <div class="gallery-caption">Hands-on Lab Training</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&h=400&fit=crop" alt="Sports Day">
+            <div class="gallery-caption">Annual Sports Meet 2024</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1564069114553-7215e1ff1890?w=600&h=400&fit=crop" alt="Industrial Visit">
+            <div class="gallery-caption">Industrial Visit to Pharma Company</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=400&fit=crop" alt="Cultural Event">
+            <div class="gallery-caption">Cultural Celebration - Freshers 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="testimonials-section">
+        <h3>Student Voices</h3>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-img">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student">
+            </div>
+            <i class="fas fa-quote-left"></i>
+            <p>"The supportive faculty and excellent lab facilities at MMD Pharmacy College helped me build a strong foundation in pharmaceutical sciences. The placement assistance was invaluable."</p>
+            <h4>Priya Sharma</h4>
+            <span>B.Pharma Final Year | Placed at Sun Pharma</span>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-img">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student">
+            </div>
+            <i class="fas fa-quote-left"></i>
+            <p>"Beyond academics, the sports events and cultural fests made my college life memorable. The ragging-free environment made me feel safe and focused on learning."</p>
+            <h4>Rahul Verma</h4>
+            <span>D.Pharma Graduate 2024</span>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-img">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student">
+            </div>
+            <i class="fas fa-quote-left"></i>
+            <p>"The industry visits and guest lectures from pharma experts gave us real-world exposure. The placement cell's support helped me crack interviews with top companies."</p>
+            <h4>Anjali Singh</h4>
+            <span>B.Pharma 2023 | Research Associate</span>
+          </div>
+        </div>
+      </div>
+
+     
+  </section>
 
   <script src="js/slide.js"></script>
-
-    <%- include('footer') %>
+  <%- include('footer') %>
 
 </body>
 </html>

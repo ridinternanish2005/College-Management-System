@@ -71,7 +71,7 @@
             <label>User Type</label>
             <select id="userType" class="form-control" required>
                 <option value="" disabled selected>Select user</option>
-                <option value="student">Student</option>
+               <a href="/students"> <option value="student">Student</option> </a>
                 <option value="faculty">Faculty</option>
                 <option value="admin">Admin</option>
                 <option value="principal">Principal</option>
@@ -99,18 +99,6 @@
 
 <!-- ================= SCRIPT ================= -->
 <script>
-document.getElementById("userType").addEventListener("change", function () {
-    const username = document.getElementById("username");
-
-    if (this.value === "student") {
-        username.placeholder = "Enter Enrollment Number";
-    } else if (this.value === "faculty") {
-        username.placeholder = "Enter Faculty ID";
-    } else {
-        username.placeholder = "Enter Username";
-    }
-});
-
 document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -124,18 +112,16 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         return;
     }
 
-    // ===== LOGIN SUCCESS (Demo) =====
     alert("Login Successful!");
 
-    // ===== ROLE BASED REDIRECT =====
     const redirectPage = {
-        student: "student",
-        faculty: "faculty",
-        admin: "admin",
-        principal: "principal"
+        student: "/erp/student",
+        faculty: "/erp/faculty",
+        admin: "/erp/admin",
+        principal: "/erp/principal"
     };
 
-    window.location.href = redirectPage[userType] || "dashboard.html";
+    window.location.href = redirectPage[userType] ||"dashboard.html";
 });
 </script>
 

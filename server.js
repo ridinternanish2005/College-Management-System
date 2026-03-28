@@ -4,15 +4,11 @@ import connectDB from "./config/db.js";
 import path from "path";
 
 import mainRoutes from "./routes/mainRoutes.js";
-// import admissionRoutes from "./routes/admissionRoutes.js";
+
 import erpRoutes from "./routes/erpRoutes.js";
+// import admission2Routes from "./routes/admission2Routes.js"
 
-
- /////////////////////////////////////////////////////////////////////
 import admissionRoutes from "./routes/admissionRoutes.js";
-///////////////////////////////
-// import studentRoutes from "./routes/studentRoutes.js";
-import courseRoutes from "./routes/courseRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -35,8 +31,20 @@ app.use(express.static(path.join(process.cwd(), "public")));
 app.use("/", mainRoutes);
 app.use("/admission", admissionRoutes);
 app.use("/erp", erpRoutes);
-app.use("/allcourecs", courseRoutes);
+// app.use("/admission2", admission2Routes);
 
+
+// ////////////////////////////////////////////////////////////
+// app.get("/enquary",(req,res)=>{
+//   res.render("Admission/enquiry.ejs")
+// })
+// app.get("/allcourses",(req,res)=>{
+//   res.render("Admission/allcourses"); 
+// })
+
+
+
+/////////////////////////////////////////////////////
 
 // app.use("/api", studentRoutes);
 // Route mount

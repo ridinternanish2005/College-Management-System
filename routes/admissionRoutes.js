@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
    res.send("Admission/admission.ejs");
 });
 
+
 // Submit form
 router.post("/submit", createAdmission);
 
