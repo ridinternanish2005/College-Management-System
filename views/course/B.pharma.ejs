@@ -306,23 +306,7 @@
     </style>
 </head>
 <body>
-
-<div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo">
-            <h1><i class="fas fa-capsules"></i> B.Pharm</h1>
-            <span>Bachelor of Pharmacy | Gateway to Healthcare & Pharma Industry</span>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#overview">Overview</a>
-            <a href="#eligibility">Eligibility</a>
-            <a href="#admission">Admission</a>
-            <a href="#syllabus">Syllabus</a>
-            <a href="#career">Career</a>
-        </div>
-    </div>
-</div>
+<%- include('partials/Navbar') %>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -535,23 +519,8 @@
     </div>
 </div>
 
-<!-- Call to action -->
-<div class="container" style="text-align: center; margin: 2rem auto 3rem;">
-    <div style="background: var(--primary-green); border-radius: 48px; padding: 2rem; color: white;">
-        <i class="fas fa-capsules" style="font-size: 2.5rem;"></i>
-        <h3 style="margin: 0.5rem 0;">Start Your Journey in Pharmacy</h3>
-        <p>Enroll in a PCI-approved B.Pharm college and become a vital part of the healthcare system. Shape the future of medicine and patient care.</p>
-        <button class="btn-hero" style="background: white; color: var(--primary-green); margin-top: 1rem;" onclick="alert('Visit the official Pharmacy Council of India (PCI) website or state counselling authority for a list of approved colleges.')"><i class="fas fa-search"></i> Find B.Pharm Colleges</button>
-    </div>
-</div>
 
-<footer>
-    <div class="container">
-        <p><i class="fas fa-capsules"></i> Bachelor of Pharmacy (B.Pharm) – Innovating Healthcare, Improving Lives</p>
-        <p style="font-size: 0.85rem; margin-top: 12px;">This page provides general information about B.Pharm courses, eligibility, career scope, and admission. For specific university requirements, refer to official prospectus and PCI guidelines. All data is indicative.</p>
-        <p style="margin-top: 1rem;">💊 Dedicated to Pharmacy Professionals – The Pillars of Healthcare 💊</p>
-    </div>
-</footer>
+
 
 <script>
     // smooth scroll for nav links
@@ -568,5 +537,6 @@
         });
     });
 </script>
+  <%- include('partials/footer') %>
 </body>
 </html>

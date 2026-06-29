@@ -306,22 +306,8 @@
     </style>
 </head>
 <body>
+<%- include('partials/Navbar') %>
 
-<div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo">
-            <h1><i class="fas fa-chalkboard-user"></i> B.Ed</h1>
-            <span>Bachelor of Education | Teacher Training Program</span>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#eligibility">Eligibility</a>
-            <a href="#admission">Admission</a>
-            <a href="#syllabus">Syllabus</a>
-            <a href="#career">Career</a>
-        </div>
-    </div>
-</div>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -541,23 +527,9 @@
     </div>
 </div>
 
-<!-- Call to action -->
-<div class="container" style="text-align: center; margin: 2rem auto 3rem;">
-    <div style="background: var(--primary-blue); border-radius: 48px; padding: 2rem; color: white;">
-        <i class="fas fa-person-chalkboard" style="font-size: 2.5rem;"></i>
-        <h3 style="margin: 0.5rem 0;">Start Your Teaching Career Today</h3>
-        <p>Enroll in a NCTE-approved B.Ed program and become a qualified teacher. Build the future, one student at a time.</p>
-        <button class="btn-hero" style="background: white; color: var(--primary-blue); margin-top: 1rem;" onclick="alert('Visit the official website of NCTE or your state education board for list of recognized B.Ed colleges.')"><i class="fas fa-search"></i> Find B.Ed Colleges Near You</button>
-    </div>
-</div>
 
-<footer>
-    <div class="container">
-        <p><i class="fas fa-chalkboard-user"></i> Bachelor of Education (B.Ed) – Empowering Educators, Transforming Lives</p>
-        <p style="font-size: 0.85rem; margin-top: 12px;">This page provides general information about B.Ed courses, eligibility, career scope, and admission. For specific university requirements, refer to official prospectus. All data is indicative.</p>
-        <p style="margin-top: 1rem;">📚 Teach the Future. Be the Change. 📚</p>
-    </div>
-</footer>
+
+
 
 <script>
     // smooth scroll for nav links
@@ -574,5 +546,6 @@
         });
     });
 </script>
+  <%- include('partials/footer') %>
 </body>
 </html>

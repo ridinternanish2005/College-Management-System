@@ -406,20 +406,7 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <!-- Navigation -->
-    <div class="navbar">
-        <div class="logo">BA<span> // nexus</span></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#competencies">Competencies</a>
-            <a href="#methodology">Methodology</a>
-            <a href="#cases">Success</a>
-            <a href="#contact">Connect</a>
-        </div>
-        <button class="btn-outline" id="contactNavBtn">Request consultation</button>
-    </div>
+<%- include('partials/Navbar') %>
 
     <!-- Hero / Home -->
     <div id="home">
@@ -581,34 +568,7 @@
         </div>
     </section>
 
-    <!-- Contact & CTA -->
-    <section id="contact">
-        <div class="contact-cta">
-            <h2>Drive your next initiative with expert BA</h2>
-            <p style="opacity:0.9; max-width:600px; margin:0 auto;">Get a complimentary discovery session — we’ll help you scope, define, and accelerate.</p>
-            <div class="contact-flex">
-                <div class="contact-info">
-                    <h3>📬 Let’s connect</h3>
-                    <p>📍 350 Mission St, San Francisco, CA 94105</p>
-                    <p>📞 +1 (415) 869-2400</p>
-                    <p>✉️ ba@jnam.com</p>
-                    <p style="margin-top:16px;">🌐 LinkedIn / X: @BAnexus</p>
-                </div>
-                <div class="contact-form">
-                    <input type="text" id="baName" placeholder="Full name" autocomplete="name">
-                    <input type="email" id="baEmail" placeholder="Work email">
-                    <textarea rows="3" id="baMsg" placeholder="Tell us about your business challenge or BA needs..."></textarea>
-                    <button id="baSubmitBtn">Request analysis consultation →</button>
-                    <p id="baFormFeedback" style="color:#FFC857; font-size:0.85rem;"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 BA Nexus — a division of JNAM Group | Business Analysis Center of Excellence</p>
-        <p style="margin-top: 10px;">📊 IIBA® endorsed | Agile & Waterfall | Data-driven outcomes</p>
-    </footer>
+ 
 </div>
 
 <script>
@@ -664,6 +624,6 @@
         console.log("BA Nexus page loaded — comprehensive business analysis details, frameworks, and success stories ready.");
     });
 </script>
-
+  <%- include('partials/footer') %>
 </body>
 </html>

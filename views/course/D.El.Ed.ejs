@@ -306,23 +306,7 @@
     </style>
 </head>
 <body>
-
-<div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo">
-            <h1><i class="fas fa-chalkboard"></i> D.El.Ed</h1>
-            <span>Diploma in Elementary Education | Primary Teacher Training</span>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#overview">Overview</a>
-            <a href="#eligibility">Eligibility</a>
-            <a href="#admission">Admission</a>
-            <a href="#syllabus">Syllabus</a>
-            <a href="#career">Career</a>
-        </div>
-    </div>
-</div>
+<%- include('partials/Navbar') %>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -539,23 +523,8 @@
     </div>
 </div>
 
-<!-- Call to action -->
-<div class="container" style="text-align: center; margin: 2rem auto 3rem;">
-    <div style="background: var(--primary-orange); border-radius: 48px; padding: 2rem; color: white;">
-        <i class="fas fa-chalkboard-user" style="font-size: 2.5rem;"></i>
-        <h3 style="margin: 0.5rem 0;">Start Your Journey in Teaching</h3>
-        <p>Enroll in a NCTE-approved D.El.Ed program and become a qualified elementary teacher. Inspire the next generation.</p>
-        <button class="btn-hero" style="background: white; color: var(--primary-orange); margin-top: 1rem;" onclick="alert('Visit the official NCTE website or state education board for a list of recognized D.El.Ed colleges and admission notifications.')"><i class="fas fa-search"></i> Find D.El.Ed Colleges</button>
-    </div>
-</div>
 
-<footer>
-    <div class="container">
-        <p><i class="fas fa-chalkboard"></i> Diploma in Elementary Education (D.El.Ed) – Building Foundations for a Better Future</p>
-        <p style="font-size: 0.85rem; margin-top: 12px;">This page provides general information about D.El.Ed courses, eligibility, career scope, and admission. For specific state/university requirements, refer to official prospectus and NCTE guidelines. All data is indicative.</p>
-        <p style="margin-top: 1rem;">📚 Educate, Empower, Elevate 📚</p>
-    </div>
-</footer>
+
 
 <script>
     // smooth scroll for nav links
@@ -572,5 +541,6 @@
         });
     });
 </script>
+  <%- include('partials/footer') %>
 </body>
 </html>

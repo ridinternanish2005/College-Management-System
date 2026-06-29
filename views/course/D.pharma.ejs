@@ -378,21 +378,7 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <!-- Navigation -->
-    <div class="navbar">
-        <div class="logo">D.Pharma <span>// Diploma in Pharmacy</span></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#curriculum">Curriculum</a>
-            <a href="#admission">Admission</a>
-            <a href="#career">Career</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <button class="btn-outline" id="enquiryBtn">Free Counselling</button>
-    </div>
+    <%- include('partials/Navbar') %>
 
     <!-- Hero Section -->
     <div id="home">
@@ -557,40 +543,9 @@
         </div>
     </section>
 
-    <!-- Contact & Free Counselling -->
-    <section id="contact">
-        <div class="enquiry-section">
-            <h2 style="font-size: 2rem; text-align: center;">📞 Free Career Counselling & Admission Guidance</h2>
-            <p style="text-align: center; margin-top: 12px; opacity: 0.9;">Get expert advice on D.Pharma colleges, entrance exams, registration process, and career pathways.</p>
-            <div class="enquiry-flex">
-                <div class="enquiry-info">
-                    <h3>Contact Information</h3>
-                    <p style="margin-top: 16px;">📍 Pharmacy Education Resource Center, New Delhi - 110001</p>
-                    <p>📞 Helpline: +91-98765-43210 / +91-88600-22346</p>
-                    <p>✉️ Email: dpharma.counselling@pharmaedu.in</p>
-                    <p>🕒 Mon-Sat: 10:00 AM - 6:00 PM</p>
-                    <p style="margin-top: 24px;"><strong>📌 Free Resources:</strong> College list, entrance exam guides, scholarship updates, PCI registration details.</p>
-                </div>
-                <div class="enquiry-form">
-                    <input type="text" id="studentName" placeholder="Full Name" autocomplete="name">
-                    <input type="email" id="studentEmail" placeholder="Email Address">
-                    <input type="tel" id="studentPhone" placeholder="Mobile Number">
-                    <select id="studentState">
-                        <option value="">Select State</option>
-                        <option>Delhi</option><option>Uttar Pradesh</option><option>Maharashtra</option><option>Karnataka</option><option>Tamil Nadu</option><option>West Bengal</option><option>Rajasthan</option><option>Other</option>
-                    </select>
-                    <textarea rows="2" id="studentQuery" placeholder="Your question (e.g., entrance exam, college admission, career options)"></textarea>
-                    <button id="submitCounselling">Request Free Counselling →</button>
-                    <p id="formFeedbackMsg" style="color: #ffb347; font-size: 0.85rem; margin-top: 6px;"></p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>© 2025 D.Pharma Information Hub | Pharmacy Council of India (PCI) Approved Curriculum</p>
-        <p style="margin-top: 12px; font-size: 0.85rem;">📌 All information is based on official PCI guidelines and university sources. Please verify with respective institutions before applying.</p>
-    </footer>
+
+
 </div>
 
 <script>
@@ -657,6 +612,6 @@
     
     console.log("D.Pharma comprehensive page loaded — all details including curriculum, career, admission, and PCI guidelines.");
 </script>
-
+  <%- include('partials/footer') %>
 </body>
 </html>

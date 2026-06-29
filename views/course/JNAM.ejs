@@ -383,20 +383,8 @@
     </style>
 </head>
 <body>
+<%- include('partials/Navbar') %>
 
-<div class="container">
-    <!-- Navigation -->
-    <div class="navbar">
-        <div class="logo">JNAM<span> // nexus</span></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#projects">Work</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <button class="btn-outline" id="demoBtn">Get in touch</button>
-    </div>
 
     <!-- Hero Section (home) -->
     <div id="home">
@@ -537,36 +525,9 @@
         </div>
     </section>
 
-    <!-- Contact + Newsletter / CTA Section -->
-    <section id="contact">
-        <div class="contact-section">
-            <h2 style="font-size: 2rem;">Let's build something iconic</h2>
-            <p style="margin-top: 12px; max-width: 500px; margin-left: auto; margin-right: auto;">Ready to transform your vision? Reach out — we’d love to hear your story.</p>
-            <div class="contact-flex">
-                <div class="contact-info">
-                    <h3>📍 JNAM global</h3>
-                    <p>228 Park Ave S, New York, NY 10003</p>
-                    <p>📞 +1 (212) 555-0978</p>
-                    <p>✉️ hello@jnam.com</p>
-                    <div style="margin-top: 24px;">
-                        <p><strong>🌐 Social channels</strong><br>Instagram / LinkedIn / X @jnam</p>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <input type="text" placeholder="Full name" id="contactName">
-                    <input type="email" placeholder="Email address" id="contactEmail">
-                    <textarea rows="3" placeholder="Tell us about your project..." id="contactMsg"></textarea>
-                    <button id="sendMsgBtn">Send message →</button>
-                    <p id="formFeedback" style="font-size:0.85rem; color:#1E6F9F;"></p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>© 2025 JNAM — Visionary Dynamics. All ideas are seeds. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">⚡ built with intention | designed for the future</p>
-    </footer>
+
+
 </div>
 
 <script>
@@ -664,6 +625,6 @@
         // optional prefill demo effect? none intrusive
     });
 </script>
-
+  <%- include('partials/footer') %>
 </body>
 </html>

@@ -312,19 +312,9 @@
   </style>
 </head>
 <body>
+  <%- include('partials/Navbar') %>
 
-<header class="hero">
-  <div class="container hero-content">
-    <div class="badge-program">
-      <i class="fas fa-chalkboard-user"></i> श्री माँ मातुआरनी शिक्षण समूह
-    </div>
-    <h1>Programme-wise Admission 2025–26<br><span style="font-size: 1.6rem;">D.Pharm | B.Pharm | BA | ANM | GNM | B.Ed | D.El.Ed</span></h1>
-    <div class="tagline">
-      विभिन्न पाठ्यक्रमों हेतु विशेष प्रवेश मार्गदर्शिका — पारदर्शी प्रक्रिया, योग्यता आधारित प्रवेश |
-      Course-specific eligibility, fee structure & admission roadmap.
-    </div>
-  </div>
-</header>
+
 
 <main class="container">
   <!-- Course Grid: All requested programs -->
@@ -473,12 +463,7 @@
   </div>
 </main>
 
-<footer>
-  <div class="container">
-    <p>© 2025 Maa Matuarni Shikshan Sansthan | प्रवेश नियमावली शैक्षणिक सत्र 2025-26 | Affiliated to AKTU / State University / INC / NCTE</p>
-    <p style="margin-top: 8px; font-size: 0.8rem;">जय माँ मातुआरनी — शिक्षा ही संस्कार है | D.Pharm, B.Pharm, BA, ANM, GNM, B.Ed, D.El.Ed admissions open</p>
-  </div>
-</footer>
+
 
 <script>
   // Interactive alerts for "Apply Now" buttons (demo purpose)
@@ -495,5 +480,6 @@
     alert("📞 हमारी admission team आपकी सहायता के लिए तत्पर है। कृपया कॉल करें: +91-9876543210 या ईमेल करें: admission@maamatuarni.edu.in");
   });
 </script>
+  <%- include('partials/footer') %>
 </body>
 </html>

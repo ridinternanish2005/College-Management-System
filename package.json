@@ -1,14 +1,18 @@
 {
   "dependencies": {
-    "body-parser": "^2.2.1",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
+    "type": "module",
     "express": "^5.2.1",
-    "mongoose": "^9.1.2",
+    "express-session": "^1.19.0",
+    "mongoose": "^9.6.2",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.14"
   }
 }

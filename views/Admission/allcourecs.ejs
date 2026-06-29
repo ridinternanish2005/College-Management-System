@@ -8,17 +8,8 @@
  <link rel="stylesheet" href="/css/allcourese.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <i class="fas fa-graduation-cap logo"></i>
-                <div>
-                    <h1>All Academic Programs</h1>
-                    <div class="subtitle">Explore 50+ Undergraduate, Postgraduate, Diploma, and Certificate Courses at HRI Group of Institutions</div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <%- include('partials/Navbar') %>
+ 
     
     <div class="container">
         <div class="search-filter-container">
@@ -488,20 +479,8 @@
         </div>
     </div>
     
-    <footer>
-        <div class="container">
-            <p>HRI Group of Institutions | Discover Your Passion, Build Your Future</p>
-            <div class="footer-links">
-                <a href="#">Admission Procedure</a>
-                <a href="#">Fee Structure</a>
-                <a href="#">Scholarships</a>
-                <a href="#">Campus Tour</a>
-                <a href="#">Contact Us</a>
-            </div>
-            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">&copy; 2024 HRI Group of Institutions. All rights reserved.</p>
-        </div>
-    </footer>
 
-  
+
+    <%- include('partials/footer') %>
 </body>
 </html>

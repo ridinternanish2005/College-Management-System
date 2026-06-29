@@ -2,8 +2,12 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("partials/Navbar");
+  res.render("index.ejs");
 });
+
+router.get("/about",(req,res)=>{
+  res.render("about/about.ejs")
+})
 
 router.get("/contact", (req, res) => {
   res.render("Contact");
