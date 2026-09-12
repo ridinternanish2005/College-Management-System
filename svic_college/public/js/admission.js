@@ -25,6 +25,34 @@
         const streamRequiredSpan = document.getElementById('streamRequired');
         const pincode = document.getElementById('pincode');
 
+
+        document
+  .getElementById("admissionForm")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/api/admissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      alert(result.message);
+      console.log(result);
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong!");
+    }
+  });
         // Character counter
         if (addressField && counter) {
             addressField.addEventListener('input', function() {

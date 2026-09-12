@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 
 import path from "path";
 
+import admissionRoutes from "./routes/admissionRoutes.js";
+
+
 const router = express.Router();
 
 router.get("/",(req,res)=>{
@@ -50,6 +53,8 @@ router.get("/why", (req, res) => {
 router.get("/teacher", (req, res) => {
     res.render("teacher.ejs");
 });
+
+router.use("/", admissionRoutes);
 
 
 export default router;

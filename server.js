@@ -1,5 +1,6 @@
-import express from "express";
 import dotenv from "dotenv";
+import express from "express";
+
 import connectDB from "./config/db.js";
 import path from "path";
 
@@ -41,7 +42,7 @@ app.use("/svic_college", express.static(path.join(process.cwd(), "svic_college/p
 app.use("/", mainRoutes);
 app.use("/admission", admissionRoutes);
 app.use("/erp", erpRoutes);
-// app.use("/admission2", admission2Routes);
+
 
 //.......................... Mount the school and svic_college routes......................
 
@@ -49,22 +50,10 @@ app.use("/school", schoolWebRoutes);                           //main routes ye 
 app.use("/svic_college", svicRoutes);                        //main routes ye hai
 app.use("/msd-school", webRoutes);
 
-// app.get("/index",(req,res)=>{
-//   res.render("index")
-// })
 
 
-// app.get("/hh",(req,res)=>{
-//   res.render("index")
-
-// })
-/////////////////////////////////////////////////////
-
-// app.use("/api", studentRoutes);
-// Route mount
-// app.use("/admission", admissionRoutes);
 
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(` Server running on http://localhost:${PORT}`);
 });
